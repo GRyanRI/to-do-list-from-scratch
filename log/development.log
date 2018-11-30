@@ -781,3 +781,94 @@ FOREIGN KEY ("user_id")
   [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(2240333999022301455)[0m
   [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/todos/" for ::1 at 2018-11-29 11:52:05 -0500
+  [1m[35m (31.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TodosController#index as HTML
+Filter chain halted as :authenticate rendered or redirected
+Completed 401 Unauthorized in 2ms (Views: 0.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/todos/" for ::1 at 2018-11-29 12:00:29 -0500
+Processing by TodosController#index as HTML
+Filter chain halted as :authenticate rendered or redirected
+Completed 401 Unauthorized in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sign-up" for ::1 at 2018-11-29 16:27:20 -0500
+Processing by UsersController#signup as */*
+  Parameters: {"credentials"=>{"email"=>"wack@wack.com", "pasword"=>"1"}}
+Unpermitted parameter: :pasword
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (43.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "wack@wack.com"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "wack@wack.com"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (3.26ms)
+Completed 400 Bad Request in 512ms (Views: 43.7ms | ActiveRecord: 198.9ms)
+
+
+Started POST "/sign-up" for ::1 at 2018-11-29 16:31:32 -0500
+Processing by UsersController#signup as */*
+  Parameters: {"credentials"=>{"email"=>"wack@wack.com", "pasword"=>"1"}}
+Unpermitted parameter: :pasword
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "wack@wack.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "wack@wack.com"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (9.24ms)
+Completed 400 Bad Request in 28ms (Views: 9.6ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/sign-up" for ::1 at 2018-11-29 16:32:49 -0500
+Processing by UsersController#signup as */*
+  Parameters: {"credentials"=>{"email"=>"wack@wack.com", "pasword"=>"1", "password_confirmation"=>"[FILTERED]"}}
+Unpermitted parameter: :pasword
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "wack@wack.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "wack@wack.com"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.06ms)
+Completed 400 Bad Request in 15ms (Views: 0.4ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/sign-up" for ::1 at 2018-11-29 16:33:30 -0500
+Processing by UsersController#signup as */*
+  Parameters: {"credentials"=>{"email"=>"wack@wack.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "wack@wack.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (44.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "wack@wack.com"], ["token", "8d1ff5848e34093d48278694036e7fd9"], ["password_digest", "$2a$10$7tok8thqv/H638a0d9mwROi6EXTDpsONrrzGDjzZHg9vwc8f5HOge"], ["created_at", "2018-11-29 21:33:30.834229"], ["updated_at", "2018-11-29 21:33:30.834229"]]
+  [1m[35m (82.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "wack@wack.com"], ["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Json (7.69ms)
+Completed 201 Created in 246ms (Views: 16.9ms | ActiveRecord: 127.4ms)
+
+
+Started POST "/sign-up" for ::1 at 2018-11-29 16:34:44 -0500
+Processing by UsersController#signup as */*
+  Parameters: {"credentials"=>{"email"=>"wack1@wack.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "wack1@wack.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "wack1@wack.com"], ["token", "4cf10d3290814bfc22ace2d173def3d7"], ["password_digest", "$2a$10$2HPGiNp2lZP9.Z2a9ksduepHj/.BT5t68BAoBlXgecf.Ke30ld9SS"], ["created_at", "2018-11-29 21:34:44.226337"], ["updated_at", "2018-11-29 21:34:44.226337"]]
+  [1m[35m (40.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "wack1@wack.com"], ["id", 3], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Json (0.22ms)
+Completed 201 Created in 130ms (Views: 7.8ms | ActiveRecord: 42.2ms)
+
+
+Started POST "/sign-up" for ::1 at 2018-11-29 16:47:31 -0500
+Processing by UsersController#signup as */*
+  Parameters: {"credentials"=>{"email"=>"wack2@wack.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (1.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "wack2@wack.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "wack2@wack.com"], ["token", "d29c588a6d6f1d82c4693c985aa5f2c0"], ["password_digest", "$2a$10$XuAv/R68FdYI/Ygd4BwKruVM.ca6anhMiliZxY/RDlKE2gedZkzQi"], ["created_at", "2018-11-29 21:47:31.812582"], ["updated_at", "2018-11-29 21:47:31.812582"]]
+  [1m[35m (41.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Exists (1.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "wack2@wack.com"], ["id", 4], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Json (0.26ms)
+Completed 201 Created in 134ms (Views: 5.5ms | ActiveRecord: 44.5ms)
+
+
+Started GET "/todos/" for ::1 at 2018-11-30 08:25:39 -0500
+Processing by TodosController#index as HTML
+Filter chain halted as :authenticate rendered or redirected
+Completed 401 Unauthorized in 4ms (Views: 0.8ms | ActiveRecord: 0.0ms)
+
+
